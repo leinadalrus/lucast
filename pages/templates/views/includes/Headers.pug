@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    block child-script
+      script
+        include ./src/app/utils/Sanitizer.js
+
+    nav
+      div(class="list-group")
+        a(class="list-group-item list-group-item-action" href="./pages/templates/views/index") Home
+        a(class="list-group-item list-group-item-action" href="./pages/templates/views/profile") My Profile
+        a(class="list-group-item list-group-item-action" href="./pages/templates/views/explorer") Discover + Explore
+        a(class="list-group-item list-group-item-action" href="./pages/templates/views/writer") Write My Story
+      div(data-spy="scroll" data-target="#navbar-list-group" data-offset="0")
+        h4(id="list-item-1") Home
+        br
+        h4(id="list-item-2") My Profile
+        br
+        h4(id="list-item-3") Discover + Explore
+        br
+        h4(id="list-item-4") Write My Story
+

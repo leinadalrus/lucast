@@ -1,0 +1,5 @@
+extends PageModel.pug
+block marked-it
+  div(class="markdown-editor" (click)="edit()")
+    :markdown-it(linkify langPrefix="highlight-")
+    script(src="./models/MarkdownEditorModel.js")

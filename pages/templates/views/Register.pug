@@ -1,0 +1,27 @@
+extends PageModel.pug
+
+title Register | Lucast
+body 
+  h1 Register 
+  h6
+    i Hello, and welcome!
+  br
+  div 
+    label(for="userPasswordInput")  Input username here
+    input#(type="text", name="usernameInput")
+    br
+    label(for="userPasswordInput")  Input password here
+    input#(type="password", name="userPasswordInput")
+    br
+    label(for="userPasswordInput")  Input password again: confirm password
+    input#(type="password", name="userPasswordInput")
+    br
+    label(for="userEmailInput")  Input email here
+    input#(type="email", name="userEmail")
+    br
+    label(for="userEmailInput")  Input email again: confirm email
+    input#(type="email", name="userEmail")
+
+
+block footer-content
+  script(src="./auths/RegisterService.js")

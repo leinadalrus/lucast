@@ -1,0 +1,20 @@
+extends PageModel.pug
+
+title Login | Lucast
+body 
+  h1 Login 
+  h6
+    i Welcome
+  br
+  div(class="login-context-area")
+    label(for="usernameInput") Who, you?
+    input#(type="text", name="usernameInput")
+    br
+    label(for="userPasswordInput") Pssst! Word ...
+    input#(type="password", name="userPasswordInput")
+    br
+
+block footer-content
+  i Haven't signed up?
+    a(href="./templates/views/Register.pug") One of us! One of us!
+  script(src="./auths/LoginService.js")
