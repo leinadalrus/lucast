@@ -1,14 +1,18 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+include includes/Headers.pug
+    script(src="https://unpkg.com/ml5@latest/dist/ml5.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js") 
     title Hemingway-ify
   body
     h1 Hemingway-ify it
     h2
       i ... or, Davinci-ify it, it's your choice.
 
+    script(src="./src/app/processors/ClassifierNLP.ts")
+    script(type="text/javascript").
+      |. createCanvas(480, 640) // p5.js code
+      |. background(333)
+
 include includes/Footers.pug
   block footer-site-info
+  script(type="text/javascript"). console.log('ml5.js : version ', ml5.version);
