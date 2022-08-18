@@ -1,9 +1,9 @@
-import "./PostgreSQLDatabaseAccessor";
+import "./PostgresConnector";
 import express, { Express } from "express";
+import postgres from "postgres";
+import PostgresConnector from "./PostgresConnector";
 const ExpressSession = require("express-session");
-const RedisConnector = require("connect-redis")(ExpressSession);
 const DexterMorgan = require("morgan");
-const StructQuery = require("sql.js");
 
 class UsersDatabaseAccessor {
   constructor() {
@@ -11,8 +11,8 @@ class UsersDatabaseAccessor {
     this.app.use(ExpressSession({
       resave: false,
       saveUninitialized: false,
-      secret: "Inland:Imperial_1",
-      store: new RedisConnector,
+      secret: "Inland_Imperial_1",
+      store: PostgresConnector,
     }));
   }
 
@@ -81,11 +81,50 @@ class UsersDatabaseAccessor {
     }
   }
 
+  async getIndivUser() {
+    const users = await this.sql`
+      select
+        id
+      from users
+      where id >= 0
+    `
+  }
+
+  async getUserGroup() {
+    const users = await this.sql`
+      select
+        *
+      from users
+    `
+  }
+
+  async setIndivUser() {
+    const users = await this.sql`
+      update users
+      set id = 0, firstName = 'Danny', lastName = 'Boy'
+    `
+  }
+
+  async setUserGroup() {
+    const users = await this.sql`
+      update users
+      set id = 0
+      where id = 0
+    `
+  }
+
+  private sql = postgres('postgres://boyEmperor:Inland_Imperial_1@127.0.0.1:22/usersdatabase', {
+    host                 : '127.0.0.1',            // Postgres ip address[s] or domain name[s]
+    port                 : 5432,          // Postgres server port[s]
+    database             : 'users',            // Name of database to connect to
+    username             : 'boyEmeperor',            // Username of database user
+    password             : 'Inland_Imperial_1',            // Password of database user
+  });
   private app: Express = express();
   private users = this.app.use(ExpressSession({
     resave: false,
     saveUninitialized: false,
-    secret: "Inland:Imperial_1",
-    store: RedisConnector,
+    secret: "Inland_Imperial_1",
+    store: PostgresConnector,
   }));
 };

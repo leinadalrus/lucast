@@ -1,10 +1,9 @@
 import express, { Express } from "express";
 const ExpressSession = require("express-session");
-const RedisConnector = require("connect-redis")(ExpressSession);
 const DexterMorgan = require("morgan");
 const StructQuery = require("sql.js");
 
-class PostgreSQLDatabaseAccessor {
+export default class PostgresConnector {
   public constructor(request: any, response: any, next: any) {
     this.access(request, response, next);
   }
